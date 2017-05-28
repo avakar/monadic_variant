@@ -7,12 +7,12 @@ using namespace avakar;
 
 TEST("monadic_variant<> has exception_ptr as the last type")
 {
-	chk monadic_variant<>::exception_pos == 0;
+	chk (monadic_variant<>::exception_pos == 0);
 }
 
 TEST("monadic_variant<int> has exception_ptr as the last type")
 {
-	chk monadic_variant<int>::exception_pos == 1;
+	chk (monadic_variant<int>::exception_pos == 1);
 }
 
 TEST("monadic_variant<> default constructs to index 0")
@@ -107,7 +107,7 @@ TEST("monadic_variant correctly destroys contained objects")
 TEST("monadic_variant contains exceptions during default construction")
 {
 	monadic_variant<defaultthrow_mock> v;
-	chk v.index() == v.exception_pos;
+	chk (v.index() == v.exception_pos);
 	chk_exc(mockobject_error, std::rethrow_exception(get<std::exception_ptr>(v)));
 }
 
@@ -117,7 +117,7 @@ TEST("monadic_variant catches exceptions during copy")
 	chk v.index() == 0;
 
 	monadic_variant<mockobject> v2 = v;
-	chk v2.index() == v2.exception_pos;
+	chk (v2.index() == v2.exception_pos);
 }
 
 TEST("monadic_variant<void> can be copied")
