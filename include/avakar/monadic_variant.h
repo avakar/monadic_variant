@@ -11,7 +11,7 @@ namespace avakar {
 struct bad_variant_access
 	: std::exception
 {
-	char const * what() const override;
+	char const * what() const noexcept override;
 };
 
 template <size_t I, typename T>
