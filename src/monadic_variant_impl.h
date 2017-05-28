@@ -63,7 +63,6 @@ struct _monadic_variant_storage
 		static_cast<T *>(p)->~T();
 	}
 
-	template <typename T>
 	static void destroy(meta::item<void>, void * p) noexcept
 	{
 		(void)p;
