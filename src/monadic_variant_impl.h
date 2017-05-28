@@ -133,7 +133,7 @@ struct _monadic_variant_storage
 };
 
 template <typename... Types>
-template <typename>
+template <bool _dummy, typename>
 monadic_variant<Types...>::monadic_variant() noexcept
 	: monadic_variant(in_place_index_t<0>())
 {

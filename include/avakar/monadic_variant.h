@@ -36,8 +36,8 @@ struct monadic_variant
 	using types = meta::list<Types..., std::exception_ptr>;
 	static constexpr size_t exception_pos = sizeof...(Types);
 
-	template <typename = typename std::enable_if<
-		std::is_constructible<meta::sub_t<types, 0>>::value
+	template <bool _dummy = false, typename = std::enable_if<_dummy
+		|| std::is_constructible<meta::sub_t<types, 0>>::value
 		|| std::is_void<meta::sub_t<types, 0>>::value
 		>::type>
 	monadic_variant() noexcept;
